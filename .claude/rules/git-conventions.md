@@ -10,7 +10,7 @@ type(scope): description
 
 Types: `feat`, `fix`, `docs`, `refactor`, `style`, `test`, `chore`, `perf`
 
-Scopes map to project directories: `scripts`, `docker`, `ray`, `vllm`, `tools`, `docs`, `hooks`
+Scopes map to project directories: `scripts`, `tools`, `docs`, `hooks`
 
 ## Commit rules
 

@@ -14,7 +14,7 @@ keep-coding-instructions: true
 ## 示例
 
 ```python
-# minivllm/config.py
+# project/config.py
 @dataclass
 class Config:
     new_field: int = 42

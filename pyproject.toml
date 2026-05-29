@@ -3,19 +3,18 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "minivllm"
+name = "oh-my-claude-code"
 version = "0.1.0"
-description = "A lightweight LLM inference engine built from scratch, inspired by vLLM"
+description = "A curated collection of Claude Code configurations, agents, skills, hooks, and rules"
 readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 authors = [{ name = "jianzhnie" }]
 requires-python = ">=3.10"
-keywords = ["llm", "inference", "vllm", "kv-cache", "tensor-parallelism"]
+keywords = ["template", "claude-code", "pre-commit", "dev-tools"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    "Intended Audience :: Science/Research",
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
@@ -23,26 +22,10 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
-dependencies = [
-    "torch>=2.2.0",
-    "transformers>=4.37.0",
-    "xxhash",
-    "colorama",
-    "numpy>=1.21",
-    "tqdm>=4.62.0",
-    "safetensors>=0.4.0",
-]
+dependencies = []
 
 [project.optional-dependencies]
-cuda = [
-    "flash-attn>=2.6.0",
-    "triton>=2.3.0",
-]
-npu = [
-    "torch-npu>=2.2.0",
-]
 dev = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
@@ -53,11 +36,11 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/jianzhnie/mini-vllm"
+Homepage = "https://github.com/jianzhnie/oh-my-claude-code"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["minivllm*"]
+include = ["oh_my_claude_code*"]
 
 [tool.ruff]
 line-length = 88
@@ -86,7 +69,7 @@ ignore = [
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["minivllm"]
+known-first-party = ["oh_my_claude_code"]
 
 [tool.ruff.lint.pyupgrade]
 keep-runtime-typing = true
@@ -109,6 +92,4 @@ addopts = ["-v", "--tb=short", "--strict-markers"]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "integration: marks tests as integration tests",
-    "cuda: marks tests requiring CUDA device",
-    "npu: marks tests requiring NPU device",
 ]

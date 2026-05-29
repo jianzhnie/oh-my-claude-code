@@ -2,6 +2,10 @@
 # Reload environment variables when directory or .envrc/.env changes
 set -euo pipefail
 
+if [[ -z "${CLAUDE_ENV_FILE:-}" ]]; then
+    exit 0
+fi
+
 if command -v direnv &>/dev/null; then
     direnv export bash 2>/dev/null | grep -v '^export .*\(SECRET\|TOKEN\|PASSWORD\|KEY\)' > "$CLAUDE_ENV_FILE" || true
 elif [[ -f .env ]]; then
