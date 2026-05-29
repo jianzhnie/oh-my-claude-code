@@ -5,8 +5,8 @@ set -euo pipefail
 input=$(cat)
 
 MODEL=$(echo "$input" | jq -r '.model.display_name // "?"')
-DIR=$(basename "$(echo "$input" | jq -r '.workspace.current_dir // "."')")
-PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
+PCT_RAW=$(echo "$input" | jq -r '.context_window.used_percentage // 0')
+PCT=${PCT_RAW%%.*}
 
 # Context bar (10 chars)
 BAR_WIDTH=10
@@ -25,24 +25,27 @@ else
 fi
 RESET='\033[0m'
 
-# Context display
+# Pure-bash human-readable token count (no bc/awk dependency)
 human_tokens() {
     local n="$1"
     if (( n >= 1000000 )); then
-        printf "%.1fM" "$(echo "$n / 1000000" | bc -l)"
+        printf "%d.%dM" "$(( (n + 50000) / 1000000 ))" "$(( ((n + 50000) % 1000000) / 100000 ))"
     elif (( n >= 1000 )); then
-        printf "%.1fK" "$(echo "$n / 1000" | bc -l)"
+        printf "%d.%dK" "$(( (n + 50) / 1000 ))" "$(( ((n + 50) % 1000) / 100 ))"
     else
         printf "%d" "$n"
     fi
 }
+
 USED=$(echo "$input" | jq -r '.context_window.used_tokens // 0')
 TOTAL=$(echo "$input" | jq -r '.context_window.total_tokens // 1000000')
 # Fallback: if token fields aren't in the JSON, estimate from percentage
 if [ "$USED" = "0" ] || [ "$USED" = "null" ]; then
     USED=$((PCT * TOTAL / 100))
 fi
-printf "%b%s %s %s/%s %3d%%%b" "$COLOR" "$BAR" "$MODEL" "$(human_tokens "$USED")" "$(human_tokens "$TOTAL")" "$PCT" "$RESET"
+
+printf "%b%s %s %s/%s %3d%%%b" "$COLOR" "$BAR" "$MODEL" \
+    "$(human_tokens "$USED")" "$(human_tokens "$TOTAL")" "$PCT" "$RESET"
 
 # Git info
 if git rev-parse --git-dir > /dev/null 2>&1; then

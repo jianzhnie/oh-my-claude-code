@@ -2,31 +2,24 @@
 # SessionStart compact hook: re-inject critical context after compaction
 set -euo pipefail
 
-PROJECT_NAME=$(basename "$CLAUDE_PROJECT_DIR")
+PROJECT_DIR="$CLAUDE_PROJECT_DIR"
 
-echo "## Post-compaction context restore"
-echo ""
-echo "### Project: ${PROJECT_NAME}"
-if [[ -f "${CLAUDE_PROJECT_DIR}/CLAUDE.md" ]]; then
-    head -1 "${CLAUDE_PROJECT_DIR}/CLAUDE.md" | sed 's/^# *//'
-fi
+echo "## Post-compaction restore — $(basename "$PROJECT_DIR")"
 echo ""
 
-echo "### Key conventions"
-echo "- Git: Conventional Commits (feat/fix/docs/refactor/test/chore)"
-echo "- Python: ruff, black(88), isort, mypy; 3.10+ syntax, collections.abc over typing"
-echo "- Shell: set -euo pipefail, [[ ]] not [ ], double-quote vars, bash 4.2+"
-echo "- Hooks: pre-tool-use (security) + post-tool-use (format+shellcheck) on every edit"
-echo "- Agents: 9 custom sub-agents available (architect, debugger, code-reviewer, etc.)"
-echo ""
-
+# State snapshot
 echo "### State"
-echo "- Branch: $(git -C "$CLAUDE_PROJECT_DIR" branch --show-current 2>/dev/null || echo 'N/A')"
-UNCOMMITTED=$(git -C "$CLAUDE_PROJECT_DIR" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+echo "- Branch: $(git -C "$PROJECT_DIR" branch --show-current 2>/dev/null || echo 'N/A')"
+UNCOMMITTED=$(git -C "$PROJECT_DIR" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 echo "- Uncommitted: ${UNCOMMITTED} files"
 echo ""
 
+# Recent commits for orientation
 echo "### Recent commits"
-git -C "$CLAUDE_PROJECT_DIR" log --oneline -5 2>/dev/null || echo "(no git history)"
+git -C "$PROJECT_DIR" log --oneline -5 2>/dev/null || echo "(no git history)"
+echo ""
 
-exit 0
+# Point to canonical docs rather than duplicating
+echo "### Reference"
+echo "- CLAUDE.md, .claude/rules/, .claude/agents/ for full conventions"
+echo "- Hook list: SessionStart → SessionEnd + PreToolUse + PostToolUse(Edit|Write→format+shellcheck) + Notification + SubagentStart"

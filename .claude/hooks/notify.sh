@@ -20,38 +20,28 @@ case "$NOTIFY_TYPE" in
         ;;
 esac
 
-# WeChat notification via Server酱
+# WeChat notification via Server酱 (fire-and-forget in background)
 if [[ -f "$PROJECT_DIR/.claude/.env" ]]; then
     SCT_SENDKEY=$(grep '^SCT_SENDKEY=' "$PROJECT_DIR/.claude/.env" | cut -d= -f2-)
     if [[ -n "${SCT_SENDKEY:-}" ]]; then
-        # Brief git summary for context
-        GIT_SUMMARY=""
         UNCOMMITTED=$(git -C "$PROJECT_DIR" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
         DIFF_STAT=$(git -C "$PROJECT_DIR" diff --stat --color=never 2>/dev/null | tail -1 || echo "")
-        if [[ -n "$DIFF_STAT" ]]; then
-            GIT_SUMMARY="变更: ${DIFF_STAT}
-"
-        fi
+        GIT_SUMMARY=""
+        [[ -n "$DIFF_STAT" ]] && GIT_SUMMARY="变更: ${DIFF_STAT}\n"
 
         TITLE="[Claude] ${VOICE_TEXT}"
-        DESP="${MESSAGE:-Claude 需要你的关注}
+        DESP="${MESSAGE:-Claude 需要你的关注}\n\n**项目**: ${PROJECT} · **分支**: ${BRANCH}\n${GIT_SUMMARY}**未提交**: ${UNCOMMITTED} 个文件"
 
-**项目**: ${PROJECT} · **分支**: ${BRANCH}
-${GIT_SUMMARY}**未提交**: ${UNCOMMITTED} 个文件"
-
-        (
-            curl -s -X POST "https://sctapi.ftqq.com/${SCT_SENDKEY}.send" \
-                -d "title=${TITLE}" \
-                -d "desp=${DESP}" \
-                -o /dev/null
-        ) &
+        nohup curl -s -X POST "https://sctapi.ftqq.com/${SCT_SENDKEY}.send" \
+            -d "title=${TITLE}" \
+            -d "desp=${DESP}" \
+            -o /dev/null &>/dev/null &
+        disown
     fi
 fi
 
-# Desktop notification (macOS)
+# Desktop notification (macOS) — synchronous, near-instant (~100ms)
 osascript -e "display notification \"${MESSAGE:-Claude 需要你的关注}\" with title \"Claude Code\"" 2>/dev/null || true
 
-# Voice notification — run in background to avoid blocking
-(say "$VOICE_TEXT" 2>/dev/null; say "$VOICE_TEXT" 2>/dev/null) &
-
-exit 0
+# Voice notification (macOS) — detached, survives hook exit
+nohup say "$VOICE_TEXT" &>/dev/null &
