@@ -5,38 +5,29 @@ set -euo pipefail
 INPUT=$(cat)
 TOOL_NAME=$(jq -r '.tool_name' <<<"$INPUT")
 
+deny() {
+    jq -n --arg reason "$1" \
+        '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: $reason}}'
+    exit 0
+}
+
 # ---- Bash command checks ----
 if [[ "$TOOL_NAME" == "Bash" ]]; then
     COMMAND=$(jq -r '.tool_input.command' <<<"$INPUT")
 
-    # Block rm -rf on system-critical directories
-    if echo "$COMMAND" | grep -qE 'rm\s+-[a-zA-Z]*[rf][a-zA-Z]*\s+/($|\s|home|etc|usr|var|opt)'; then
-        jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: "Blocked: rm -rf on system directory is prohibited by safety policy"}}'
-        exit 0
-    fi
-
-    # Block rm -rf ~ / $HOME
-    if echo "$COMMAND" | grep -qE 'rm\s+-[a-zA-Z]*[rf][a-zA-Z]*\s+(\$HOME|~)'; then
-        jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: "Blocked: rm -rf on HOME directory is prohibited by safety policy"}}'
-        exit 0
+    # Block rm -rf on system-critical or home directories (single grep)
+    if echo "$COMMAND" | grep -qE 'rm\s+-[a-zA-Z]*[rf][a-zA-Z]*\s+(/($|\s|home|etc|usr|var|opt)|\$HOME|~)'; then
+        deny "Blocked: rm -rf on system/HOME directory is prohibited by safety policy"
     fi
 
     # Block writing to .env files via shell redirection
     if echo "$COMMAND" | grep -qE '>\s*(\.\s*)?\.env'; then
-        jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: "Blocked: writing to .env may leak secrets — use a different approach for credentials"}}'
-        exit 0
+        deny "Blocked: writing to .env may leak secrets — use a different approach for credentials"
     fi
 
-    # Block force push
-    if echo "$COMMAND" | grep -qE 'git\s+push\s+.*(-f\b|--force\b|--force-with-lease\b)'; then
-        jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: "Blocked: force push overwrites remote history — please run manually"}}'
-        exit 0
-    fi
-
-    # Block direct push to main/master
-    if echo "$COMMAND" | grep -qE 'git\s+push\s+.*\b(main|master)\b'; then
-        jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: "Blocked: pushing to main/master — use a PR instead"}}'
-        exit 0
+    # Block force push and direct push to main/master (single grep)
+    if echo "$COMMAND" | grep -qE 'git\s+push\s+.*(-f\b|--force\b|--force-with-lease\b|\b(main|master)\b)'; then
+        deny "Blocked: force push or direct push to main/master — use a PR instead"
     fi
 fi
 
@@ -46,18 +37,13 @@ if [[ "$TOOL_NAME" == "Write" || "$TOOL_NAME" == "Edit" ]]; then
 
     # Block .env files
     if [[ "$FILE_PATH" == */.env || "$FILE_PATH" == */.env.* ]]; then
-        jq -n --arg fp "$FILE_PATH" \
-            '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: ("Blocked: " + $fp + " — .env files may contain sensitive data")}}'
-        exit 0
+        deny "Blocked: ${FILE_PATH} — .env files may contain sensitive data"
     fi
 
-    # Block protected file patterns
-    readonly PROTECTED_PATTERNS=("package-lock.json" ".git/")
-    for pattern in "${PROTECTED_PATTERNS[@]}"; do
+    # Block protected file patterns (bash built-in, no grep fork)
+    for pattern in "package-lock.json" ".git/"; do
         if [[ "$FILE_PATH" == *"$pattern"* ]]; then
-            jq -n --arg fp "$FILE_PATH" --arg pat "$pattern" \
-                '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: ("Blocked: " + $fp + " matches protected pattern " + $pat)}}'
-            exit 0
+            deny "Blocked: ${FILE_PATH} matches protected pattern ${pattern}"
         fi
     done
 fi

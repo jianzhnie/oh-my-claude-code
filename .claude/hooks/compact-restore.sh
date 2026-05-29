@@ -12,6 +12,10 @@ echo "### State"
 echo "- Branch: $(git -C "$PROJECT_DIR" branch --show-current 2>/dev/null || echo 'N/A')"
 UNCOMMITTED=$(git -C "$PROJECT_DIR" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 echo "- Uncommitted: ${UNCOMMITTED} files"
+
+# Stash awareness
+STASH_COUNT=$(git -C "$PROJECT_DIR" stash list 2>/dev/null | wc -l | tr -d ' ')
+[[ "$STASH_COUNT" -gt 0 ]] && echo "- Stashes: ${STASH_COUNT}"
 echo ""
 
 # Recent commits for orientation

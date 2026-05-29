@@ -20,10 +20,12 @@ if [[ -f "$PROJECT_DIR/.claude/.env" ]]; then
     SCT_SENDKEY=$(grep '^SCT_SENDKEY=' "$PROJECT_DIR/.claude/.env" | cut -d= -f2-)
     if [[ -n "${SCT_SENDKEY:-}" ]]; then
         UNCOMMITTED=$(git -C "$PROJECT_DIR" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
-        TOTAL_ADDS=$(git -C "$PROJECT_DIR" diff --numstat 2>/dev/null | awk '{s+=$1}END{print s+0}')
-        TOTAL_DELS=$(git -C "$PROJECT_DIR" diff --numstat 2>/dev/null | awk '{s+=$2}END{print s+0}')
 
-        # Build stat line
+        # Single git diff call, processed once
+        DIFF_STATS=$(git -C "$PROJECT_DIR" diff --numstat 2>/dev/null || true)
+        TOTAL_ADDS=$(awk '{s+=$1}END{print s+0}' <<< "$DIFF_STATS")
+        TOTAL_DELS=$(awk '{s+=$2}END{print s+0}' <<< "$DIFF_STATS")
+
         STATS="📝 ${UNCOMMITTED}未提交"
         [[ "$TOTAL_ADDS" -gt 0 || "$TOTAL_DELS" -gt 0 ]] && STATS="📈 +${TOTAL_ADDS} −${TOTAL_DELS}  ${STATS}"
 

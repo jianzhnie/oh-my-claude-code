@@ -45,21 +45,25 @@ cd "$PROJECT_DIR"
 BRANCH=$(git branch --show-current 2>/dev/null || echo "?")
 UNCOMMITTED=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 
-# Diff stats: added/deleted lines per file
+# Diff stats: single awk pass for unstaged
+DIFF_STATS=$(git diff --numstat 2>/dev/null || true)
 DIFF_FILES=""
 while IFS=$'\t' read -r adds dels file; do
     [[ -z "$file" ]] && continue
     DIFF_FILES+="  \`${file}\` +${adds} −${dels}\n"
-done < <(git diff --numstat 2>/dev/null || true)
+done <<< "$DIFF_STATS"
 
-TOTAL_ADDS=$(git diff --numstat 2>/dev/null | awk '{s+=$1}END{print s+0}')
-TOTAL_DELS=$(git diff --numstat 2>/dev/null | awk '{s+=$2}END{print s+0}')
-FILE_COUNT=$(git diff --name-only 2>/dev/null | wc -l | tr -d ' ')
+TOTAL_ADDS=$(awk '{s+=$1}END{print s+0}' <<< "$DIFF_STATS")
+TOTAL_DELS=$(awk '{s+=$2}END{print s+0}' <<< "$DIFF_STATS")
+FILE_COUNT=$(wc -l <<< "$DIFF_STATS" | tr -d ' ')
+[[ "$DIFF_STATS" == "" ]] && FILE_COUNT=0
 
-# Staged diff stats
-STAGED_ADDS=$(git diff --cached --numstat 2>/dev/null | awk '{s+=$1}END{print s+0}')
-STAGED_DELS=$(git diff --cached --numstat 2>/dev/null | awk '{s+=$2}END{print s+0}')
-STAGED_FILES=$(git diff --cached --name-only 2>/dev/null | wc -l | tr -d ' ')
+# Staged diff stats: single awk pass
+STAGED_STATS=$(git diff --cached --numstat 2>/dev/null || true)
+STAGED_ADDS=$(awk '{s+=$1}END{print s+0}' <<< "$STAGED_STATS")
+STAGED_DELS=$(awk '{s+=$2}END{print s+0}' <<< "$STAGED_STATS")
+STAGED_FILES=$(wc -l <<< "$STAGED_STATS" | tr -d ' ')
+[[ "$STAGED_STATS" == "" ]] && STAGED_FILES=0
 
 # Commits this session
 COMMITS=""

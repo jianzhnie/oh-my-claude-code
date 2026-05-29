@@ -6,8 +6,18 @@ INPUT=$(cat)
 FILE_PATH=$(jq -r '.tool_input.file_path // empty' <<<"$INPUT")
 TOOL_NAME=$(jq -r '.tool_name // "Edit"' <<<"$INPUT")
 
-# File must exist
+# File must exist and be a regular file
 [[ ! -f "$FILE_PATH" ]] && exit 0
+
+# Skip binary and non-text files (images, archives, compiled files, etc.)
+case "${FILE_PATH##*.}" in
+    pyc|so|o|a|dylib|wasm|bin|exe|dll) exit 0 ;;
+    png|jpg|jpeg|gif|svg|ico|webp|bmp)  exit 0 ;;
+    zip|tar|gz|bz2|xz|7z|rar)            exit 0 ;;
+    woff|woff2|ttf|eot|otf)             exit 0 ;;
+    mp3|mp4|wav|avi|mov|webm)           exit 0 ;;
+    pdf|doc|docx|xls|xlsx|pptx)         exit 0 ;;
+esac
 
 # Log edited file for session summary (deduplicate per session)
 EDIT_LOG="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}/.claude/.session-edits"
