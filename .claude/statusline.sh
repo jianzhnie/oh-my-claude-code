@@ -31,7 +31,13 @@ human_tokens() {
     if (( n >= 1000000 )); then
         printf "%d.%dM" "$(( (n + 50000) / 1000000 ))" "$(( ((n + 50000) % 1000000) / 100000 ))"
     elif (( n >= 1000 )); then
-        printf "%d.%dK" "$(( (n + 50) / 1000 ))" "$(( ((n + 50) % 1000) / 100 ))"
+        local k=$(( (n + 50) / 1000 ))
+        local r=$(( (n + 50) % 1000 / 100 ))
+        if (( k >= 1000 )); then
+            printf "1.0M"
+        else
+            printf "%d.%dK" "$k" "$r"
+        fi
     else
         printf "%d" "$n"
     fi
