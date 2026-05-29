@@ -9,15 +9,14 @@ TOOL_NAME=$(jq -r '.tool_name' <<<"$INPUT")
 if [[ "$TOOL_NAME" == "Bash" ]]; then
     COMMAND=$(jq -r '.tool_input.command' <<<"$INPUT")
 
-    # Block rm -rf on system-critical directories (not /home/user paths)
-    if echo "$COMMAND" | grep -qE 'rm\s+-[a-zA-Z]*r[a-zA-Z]*\s+/($|\s|etc|usr|var|opt|bin|sbin|lib|boot|dev|proc|sys)'; then
+    # Block rm -rf on system-critical directories
+    if echo "$COMMAND" | grep -qE 'rm\s+-[a-zA-Z]*[rf][a-zA-Z]*\s+/($|\s|home|etc|usr|var|opt)'; then
         jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: "Blocked: rm -rf on system directory is prohibited by safety policy"}}'
         exit 0
     fi
 
-    # Block rm -rf ~ / $HOME (literal match, not variable expansion)
-    # shellcheck disable=SC2016
-    if echo "$COMMAND" | grep -qE 'rm\s+-[a-zA-Z]*r[a-zA-Z]*\s+(\$HOME|~)'; then
+    # Block rm -rf ~ / $HOME
+    if echo "$COMMAND" | grep -qE 'rm\s+-[a-zA-Z]*[rf][a-zA-Z]*\s+(\$HOME|~)'; then
         jq -n '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: "Blocked: rm -rf on HOME directory is prohibited by safety policy"}}'
         exit 0
     fi
