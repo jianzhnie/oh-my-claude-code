@@ -10,27 +10,29 @@ PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
 PROJECT=$(basename "$PROJECT_DIR")
 BRANCH=$(git -C "$PROJECT_DIR" branch --show-current 2>/dev/null || echo "N/A")
 
-# Build a short spoken summary
 case "$NOTIFY_TYPE" in
-    permission)
-        VOICE_TEXT="需要授权"
-        ;;
-    *)
-        VOICE_TEXT="任务完成，请确认"
-        ;;
+    permission) VOICE_TEXT="需要授权" ;;
+    *)          VOICE_TEXT="任务完成，请确认" ;;
 esac
 
-# WeChat notification via Server酱 (fire-and-forget in background)
+# WeChat notification via Server酱
 if [[ -f "$PROJECT_DIR/.claude/.env" ]]; then
     SCT_SENDKEY=$(grep '^SCT_SENDKEY=' "$PROJECT_DIR/.claude/.env" | cut -d= -f2-)
     if [[ -n "${SCT_SENDKEY:-}" ]]; then
         UNCOMMITTED=$(git -C "$PROJECT_DIR" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
-        DIFF_STAT=$(git -C "$PROJECT_DIR" diff --stat --color=never 2>/dev/null | tail -1 || echo "")
-        GIT_SUMMARY=""
-        [[ -n "$DIFF_STAT" ]] && GIT_SUMMARY="变更: ${DIFF_STAT}\n"
+        TOTAL_ADDS=$(git -C "$PROJECT_DIR" diff --numstat 2>/dev/null | awk '{s+=$1}END{print s+0}')
+        TOTAL_DELS=$(git -C "$PROJECT_DIR" diff --numstat 2>/dev/null | awk '{s+=$2}END{print s+0}')
+
+        # Build stat line
+        STATS="📝 ${UNCOMMITTED}未提交"
+        [[ "$TOTAL_ADDS" -gt 0 || "$TOTAL_DELS" -gt 0 ]] && STATS="📈 +${TOTAL_ADDS} −${TOTAL_DELS}  ${STATS}"
 
         TITLE="[Claude] ${VOICE_TEXT}"
-        DESP="${MESSAGE:-Claude 需要你的关注}\n\n**项目**: ${PROJECT} · **分支**: ${BRANCH}\n${GIT_SUMMARY}**未提交**: ${UNCOMMITTED} 个文件"
+        DESP="## ${PROJECT} · ${BRANCH}
+
+> ${MESSAGE:-Claude 需要你的关注}
+
+${STATS}"
 
         nohup curl -s -X POST "https://sctapi.ftqq.com/${SCT_SENDKEY}.send" \
             -d "title=${TITLE}" \
@@ -40,7 +42,7 @@ if [[ -f "$PROJECT_DIR/.claude/.env" ]]; then
     fi
 fi
 
-# Desktop notification (macOS) — synchronous, near-instant (~100ms)
+# Desktop notification (macOS)
 osascript -e "display notification \"${MESSAGE:-Claude 需要你的关注}\" with title \"Claude Code\"" 2>/dev/null || true
 
 # Voice notification (macOS) — detached, survives hook exit
