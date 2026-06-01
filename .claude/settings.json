@@ -6,6 +6,7 @@
     "MAX_MCP_OUTPUT_TOKENS": "50000"
   },
   "permissions": {
+    "defaultMode": "bypassPermissions",
     "allow": [
       "Bash(shellcheck *)",
       "Bash(bash -n *)",
