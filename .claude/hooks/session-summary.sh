@@ -40,21 +40,26 @@ if [[ -f "${PROJECT_DIR}/.claude/command-log.txt" && -f "$CMD_START_FILE" ]]; th
     rm -f "$CMD_START_FILE"
 fi
 
-# Git info
+# Git info — single status call
 cd "$PROJECT_DIR"
 BRANCH=$(git branch --show-current 2>/dev/null || echo "?")
-UNCOMMITTED=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 
-# Diff stats: single awk pass for unstaged
+# Use git status --porcelain=v2 for richer parseable output in one call
+STATUS_OUT=$(git status --porcelain=2 --branch 2>/dev/null || true)
+# Count all file entries (lines starting with 1, 2, or ?), excluding headers (#)
+UNCOMMITTED=$(grep -cE '^[12?]' <<< "$STATUS_OUT" 2>/dev/null || echo 0)
+
+# Diff stats: single awk pass computes adds + dels + file list
 DIFF_STATS=$(git diff --numstat 2>/dev/null || true)
 DIFF_FILES=""
+TOTAL_ADDS=0
+TOTAL_DELS=0
 while IFS=$'\t' read -r adds dels file; do
     [[ -z "$file" ]] && continue
     DIFF_FILES+="  \`${file}\` +${adds} −${dels}\n"
+    TOTAL_ADDS=$((TOTAL_ADDS + adds))
+    TOTAL_DELS=$((TOTAL_DELS + dels))
 done <<< "$DIFF_STATS"
-
-TOTAL_ADDS=$(awk '{s+=$1}END{print s+0}' <<< "$DIFF_STATS")
-TOTAL_DELS=$(awk '{s+=$2}END{print s+0}' <<< "$DIFF_STATS")
 FILE_COUNT=$(wc -l <<< "$DIFF_STATS" | tr -d ' ')
 [[ "$DIFF_STATS" == "" ]] && FILE_COUNT=0
 

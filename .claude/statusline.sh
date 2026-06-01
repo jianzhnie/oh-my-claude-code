@@ -4,8 +4,8 @@ set -euo pipefail
 
 input=$(cat)
 
-MODEL=$(echo "$input" | jq -r '.model.display_name // "?"')
-PCT_RAW=$(echo "$input" | jq -r '.context_window.used_percentage // 0')
+# Tab-delimited jq output survives spaces in model name
+IFS=$'\t' read -r MODEL PCT_RAW USED TOTAL <<<"$(jq -r '[.model.display_name // "?", .context_window.used_percentage // 0, .context_window.used_tokens // 0, .context_window.total_tokens // 1000000] | join("\t")' 2>/dev/null <<<"$input")"
 PCT=${PCT_RAW%%.*}
 
 # Context bar (10 chars)
@@ -43,22 +43,31 @@ human_tokens() {
     fi
 }
 
-USED=$(echo "$input" | jq -r '.context_window.used_tokens // 0')
-TOTAL=$(echo "$input" | jq -r '.context_window.total_tokens // 1000000')
+# USED and TOTAL already extracted by single jq call above.
 # Fallback: if token fields aren't in the JSON, estimate from percentage
-if [ "$USED" = "0" ] || [ "$USED" = "null" ]; then
+if [[ -z "${USED:-}" || "$USED" = "0" || "$USED" = "null" ]]; then
+    TOTAL="${TOTAL:-1000000}"
     USED=$((PCT * TOTAL / 100))
 fi
 
 printf "%b%s %s %s/%s %3d%%%b" "$COLOR" "$BAR" "$MODEL" \
     "$(human_tokens "$USED")" "$(human_tokens "$TOTAL")" "$PCT" "$RESET"
 
-# Git info
+# Git info — single git status call replaces 3 separate git forks
 if git rev-parse --git-dir > /dev/null 2>&1; then
     BRANCH=$(git branch --show-current 2>/dev/null || echo "?")
-    STAGED=$(git diff --cached --name-only 2>/dev/null | wc -l | tr -d ' ')
-    MODIFIED=$(git diff --name-only 2>/dev/null | wc -l | tr -d ' ')
-    UNTRACKED=$(git ls-files --others --exclude-standard 2>/dev/null | wc -l | tr -d ' ')
+    # Parse one --porcelain output for staged/modified/untracked counts
+    GIT_STATUS=$(git status --porcelain 2>/dev/null || true)
+    STAGED=$(grep -cE '^[MADRC]' <<< "$GIT_STATUS" 2>/dev/null || echo 0)
+    MODIFIED=$(grep -cE '^.[MD]' <<< "$GIT_STATUS" 2>/dev/null || echo 0)
+    UNTRACKED=$(grep -c '^??' <<< "$GIT_STATUS" 2>/dev/null || echo 0)
+    # Strip non-numeric chars (grep -c may produce leading spaces)
+    STAGED=${STAGED//[!0-9]/}
+    MODIFIED=${MODIFIED//[!0-9]/}
+    UNTRACKED=${UNTRACKED//[!0-9]/}
+    STAGED=${STAGED:-0}
+    MODIFIED=${MODIFIED:-0}
+    UNTRACKED=${UNTRACKED:-0}
 
     printf "  \033[36m%s\033[0m" "$BRANCH"
     if [ "$STAGED" -gt 0 ] || [ "$MODIFIED" -gt 0 ] || [ "$UNTRACKED" -gt 0 ]; then

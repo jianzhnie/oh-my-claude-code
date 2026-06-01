@@ -21,10 +21,14 @@ if [[ -f "$PROJECT_DIR/.claude/.env" ]]; then
     if [[ -n "${SCT_SENDKEY:-}" ]]; then
         UNCOMMITTED=$(git -C "$PROJECT_DIR" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 
-        # Single git diff call, processed once
+        # Single git diff call, single while-read pass computes both adds + dels
         DIFF_STATS=$(git -C "$PROJECT_DIR" diff --numstat 2>/dev/null || true)
-        TOTAL_ADDS=$(awk '{s+=$1}END{print s+0}' <<< "$DIFF_STATS")
-        TOTAL_DELS=$(awk '{s+=$2}END{print s+0}' <<< "$DIFF_STATS")
+        TOTAL_ADDS=0
+        TOTAL_DELS=0
+        while IFS=$'\t' read -r adds dels _; do
+            TOTAL_ADDS=$((TOTAL_ADDS + adds))
+            TOTAL_DELS=$((TOTAL_DELS + dels))
+        done <<< "$DIFF_STATS"
 
         STATS="📝 ${UNCOMMITTED}未提交"
         [[ "$TOTAL_ADDS" -gt 0 || "$TOTAL_DELS" -gt 0 ]] && STATS="📈 +${TOTAL_ADDS} −${TOTAL_DELS}  ${STATS}"
