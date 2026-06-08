@@ -33,12 +33,63 @@ This directory contains all Claude Code configurations for the oh-my-claude-code
 
 ## Skills
 
+Skills are organized by functional category. Each skill's `metadata.tags` begins with its category label.
+
+### Check
+
 | Name | Path | Version | Author | License | Type | External Info | Description |
 |------|------|---------|--------|---------|------|---------------|-------------|
-| check | [skills/check/SKILL.md](skills/check/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — | Run the full pre-commit check suite (shellcheck, ruff, black, isort, mypy, trailing-whitespace, etc.). |
-| karpathy-guidelines | [skills/karpathy-guidelines/SKILL.md](skills/karpathy-guidelines/SKILL.md) | — | — | MIT | External | Derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls. | Behavioral guidelines to reduce common LLM coding mistakes. |
-| shell-check | [skills/shell-check/SKILL.md](skills/shell-check/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — | Validate shell scripts with both syntax check (bash -n) and static analysis (shellcheck). |
-| tech-doc-translator | [skills/tech-doc-translator/SKILL.md](skills/tech-doc-translator/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — | Translate English technical documentation (AI/ML, developer tools, API docs) into Chinese Markdown. |
+| check | [skills/01-Check/check/SKILL.md](skills/01-Check/check/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — | Run the full pre-commit check suite (shellcheck, ruff, black, isort, mypy, trailing-whitespace, etc.). Equivalent to ... |
+| shell-check | [skills/01-Check/shell-check/SKILL.md](skills/01-Check/shell-check/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — | Validate shell scripts with both syntax check (bash -n) and static analysis (shellcheck). Usage: /shell-check [file_o... |
+
+### GitHub
+
+| Name | Path | Version | Author | License | Type | External Info | Description |
+|------|------|---------|--------|---------|------|---------------|-------------|
+| codebase-inspection | [skills/02-GitHub/codebase-inspection/SKILL.md](skills/02-GitHub/codebase-inspection/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` | Inspect codebases w/ pygount: LOC, languages, ratios. |
+| github-auth | [skills/02-GitHub/github-auth/SKILL.md](skills/02-GitHub/github-auth/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` | GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login. |
+| github-code-review | [skills/02-GitHub/github-code-review/SKILL.md](skills/02-GitHub/github-code-review/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` | Review PRs: diffs, inline comments via gh or REST. |
+| github-issues | [skills/02-GitHub/github-issues/SKILL.md](skills/02-GitHub/github-issues/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` | Create, triage, label, assign GitHub issues via gh or REST. |
+| github-pr-workflow | [skills/02-GitHub/github-pr-workflow/SKILL.md](skills/02-GitHub/github-pr-workflow/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` | GitHub PR lifecycle: branch, commit, open, CI, merge. |
+| github-repo-management | [skills/02-GitHub/github-repo-management/SKILL.md](skills/02-GitHub/github-repo-management/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` | Clone/create/fork repos; manage remotes, releases. |
+| requesting-code-review | [skills/02-GitHub/requesting-code-review/SKILL.md](skills/02-GitHub/requesting-code-review/SKILL.md) | 2.0.0 | Hermes Agent (adapted from obra/superpowers + MorAlekss) | MIT | External | Hermes Agent `skills/` | Pre-commit review: security scan, quality gates, auto-fix. |
+
+### Dev
+
+| Name | Path | Version | Author | License | Type | External Info | Description |
+|------|------|---------|--------|---------|------|---------------|-------------|
+| hermes-agent-skill-authoring | [skills/03-Dev/hermes-agent-skill-authoring/SKILL.md](skills/03-Dev/hermes-agent-skill-authoring/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` | Author in-repo SKILL.md: frontmatter, validator, structure. |
+| karpathy-guidelines | [skills/03-Dev/karpathy-guidelines/SKILL.md](skills/03-Dev/karpathy-guidelines/SKILL.md) | — | — | MIT | External | Derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) | Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid... |
+| node-inspect-debugger | [skills/03-Dev/node-inspect-debugger/SKILL.md](skills/03-Dev/node-inspect-debugger/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` | Debug Node.js via --inspect + Chrome DevTools Protocol CLI. |
+| plan | [skills/03-Dev/plan/SKILL.md](skills/03-Dev/plan/SKILL.md) | 2.0.0 | Hermes Agent (writing-craft adapted from obra/superpowers) | MIT | External | Hermes Agent `skills/` | Plan mode: write an actionable markdown plan to .hermes/plans/, no execution. Bite-sized tasks, exact paths, complete... |
+| python-debugpy | [skills/03-Dev/python-debugpy/SKILL.md](skills/03-Dev/python-debugpy/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` | Debug Python: pdb REPL + debugpy remote (DAP). |
+| simplify-code | [skills/03-Dev/simplify-code/SKILL.md](skills/03-Dev/simplify-code/SKILL.md) | 1.0.0 | Hermes Agent (inspired by Claude Code /simplify) | MIT | External | Hermes Agent `skills/` | Parallel 3-agent cleanup of recent code changes. |
+| spike | [skills/03-Dev/spike/SKILL.md](skills/03-Dev/spike/SKILL.md) | 1.0.0 | Hermes Agent (adapted from gsd-build/get-shit-done) | MIT | External | Hermes Agent `skills/` | Throwaway experiments to validate an idea before build. |
+| systematic-debugging | [skills/03-Dev/systematic-debugging/SKILL.md](skills/03-Dev/systematic-debugging/SKILL.md) | 1.1.0 | Hermes Agent (adapted from obra/superpowers) | MIT | External | Hermes Agent `skills/` | 4-phase root cause debugging: understand bugs before fixing. |
+| test-driven-development | [skills/03-Dev/test-driven-development/SKILL.md](skills/03-Dev/test-driven-development/SKILL.md) | 1.1.0 | Hermes Agent (adapted from obra/superpowers) | MIT | External | Hermes Agent `skills/` | TDD: enforce RED-GREEN-REFACTOR, tests before code. |
+
+### Research
+
+| Name | Path | Version | Author | License | Type | External Info | Description |
+|------|------|---------|--------|---------|------|---------------|-------------|
+| arxiv | [skills/04-Research/arxiv/SKILL.md](skills/04-Research/arxiv/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` | Search arXiv papers by keyword, author, category, or ID. |
+| blogwatcher | [skills/04-Research/blogwatcher/SKILL.md](skills/04-Research/blogwatcher/SKILL.md) | 2.0.0 | JulienTant (fork of Hyaxia/blogwatcher) | MIT | External | [github.com/JulienTant/blogwatcher-cli](https://github.com/JulienTant/blogwatcher-cli) | Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool. |
+| llm-wiki | [skills/04-Research/llm-wiki/SKILL.md](skills/04-Research/llm-wiki/SKILL.md) | 2.1.0 | Hermes Agent | MIT | External | Based on [Andrej Karpathy's LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | Karpathy's LLM Wiki: build/query interlinked markdown KB. |
+| obsidian | [skills/04-Research/obsidian/SKILL.md](skills/04-Research/obsidian/SKILL.md) | — | — | — | External | Hermes Agent `skills/note-taking/` | Read, search, create, and edit notes in the Obsidian vault. |
+| tech-doc-translator | [skills/04-Research/tech-doc-translator/SKILL.md](skills/04-Research/tech-doc-translator/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — | Use when translating English technical documentation (AI/ML, developer tools, API docs) into Chinese Markdown. Trigge... |
+
+### MLOps
+
+| Name | Path | Version | Author | License | Type | External Info | Description |
+|------|------|---------|--------|---------|------|---------------|-------------|
+| audiocraft-audio-generation | [skills/05-MLOps/audiocraft-audio-generation/SKILL.md](skills/05-MLOps/audiocraft-audio-generation/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` | AudioCraft: MusicGen text-to-music, AudioGen text-to-sound. |
+| evaluating-llms-harness | [skills/05-MLOps/evaluating-llms-harness/SKILL.md](skills/05-MLOps/evaluating-llms-harness/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` | lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.). |
+| huggingface-hub | [skills/05-MLOps/huggingface-hub/SKILL.md](skills/05-MLOps/huggingface-hub/SKILL.md) | 1.0.0 | Hugging Face | MIT | External | Hugging Face | HuggingFace hf CLI: search/download/upload models, datasets. |
+| llama-cpp | [skills/05-MLOps/llama-cpp/SKILL.md](skills/05-MLOps/llama-cpp/SKILL.md) | 2.1.2 | Orchestra Research | MIT | External | Hermes Agent `skills/` | llama.cpp local GGUF inference + HF Hub model discovery. |
+| obliteratus | [skills/05-MLOps/obliteratus/SKILL.md](skills/05-MLOps/obliteratus/SKILL.md) | 2.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` | OBLITERATUS: abliterate LLM refusals (diff-in-means). |
+| segment-anything-model | [skills/05-MLOps/segment-anything-model/SKILL.md](skills/05-MLOps/segment-anything-model/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` | SAM: zero-shot image segmentation via points, boxes, masks. |
+| serving-llms-vllm | [skills/05-MLOps/vllm/SKILL.md](skills/05-MLOps/vllm/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` | vLLM: high-throughput LLM serving, OpenAI API, quantization. |
+| weights-and-biases | [skills/05-MLOps/weights-and-biases/SKILL.md](skills/05-MLOps/weights-and-biases/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` | W&B: log ML experiments, sweeps, model registry, dashboards. |
 
 ## Rules
 
@@ -70,10 +121,12 @@ author: <author-name>
 license: <spdx-license>
 platforms: [linux, macos, windows]
 metadata:
-  tags: [<tag1>, <tag2>]
+  tags: [<category>, <tag1>, <tag2>]
   related_skills: [<skill1>, <skill2>]
 ---
 ```
 
 - **Local** configs: Author is `Robin`, Version is `1.0.0`, License is `Apache-2.0`.
-- **External** configs: Original metadata is preserved. See the External Info column for source details.
+- **External** configs: Original metadata (Author, Version, License) is preserved. Category tag is added to `metadata.tags` for organization.
+- Skills are categorized into: `Check`, `GitHub`, `Dev`, `Research`, `MLOps`.
+- Skills are stored under `skills/<category-folder>/<skill-name>/`.
