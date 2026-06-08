@@ -1,35 +1,16 @@
 ---
 name: codebase-inspection
-description: 'Inspect codebases w/ pygount: LOC, languages, ratios.'
+description: "Inspect codebases w/ pygount: LOC, languages, ratios."
 version: 1.0.0
 author: Hermes Agent
 license: MIT
-platforms:
-- linux
-- macos
-- windows
+platforms: [linux, macos, windows]
+prerequisites: {'commands': ['pygount']}
 metadata:
   hermes:
-    tags:
-    - LOC
-    - Code Analysis
-    - pygount
-    - Codebase
-    - Metrics
-    - Repository
-    related_skills:
-    - github-repo-management
-  tags:
-  - GitHub
-  - LOC
-  - Code Analysis
-  - pygount
-  - Codebase
-  - Metrics
-  - Repository
-prerequisites:
-  commands:
-  - pygount
+    tags: [LOC, Code Analysis, pygount, Codebase, Metrics, Repository]
+    related_skills: [github-repo-management]
+  tags: [GitHub, LOC, Code Analysis, pygount, Codebase, Metrics, Repository]
 ---
 # Codebase Inspection with pygount
 

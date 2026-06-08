@@ -1,24 +1,13 @@
 ---
 name: shell-check
-description: 'Validate shell scripts with both syntax check (bash -n) and static analysis
-  (shellcheck). Usage: /shell-check [file_or_dir] — defaults to all .sh files under
-  scripts/, tools/, and examples/.'
+description: "Validate shell scripts with both syntax check (bash -n) and static analysis (shellcheck). Usage: /shell-check [file_or_dir] — defaults to all .sh files under scripts/, tools/, and examples/."
 version: 1.0.0
 author: Robin
 license: Apache-2.0
-platforms:
-- linux
-- macos
-- windows
+platforms: [linux, macos, windows]
 metadata:
-  tags:
-  - Check
-  - Skill
-  - Shell
-  - Lint
-  - Static-Analysis
-  related_skills:
-  - check
+  tags: [Check, Skill, Shell, Lint, Static-Analysis]
+  related_skills: [check]
 ---
 Run both bash syntax validation and shellcheck static analysis on the specified target.
 

@@ -4,39 +4,12 @@ description: llama.cpp local GGUF inference + HF Hub model discovery.
 version: 2.1.2
 author: Orchestra Research
 license: MIT
-dependencies:
-- llama-cpp-python>=0.2.0
-platforms:
-- linux
-- macos
-- windows
+dependencies: [llama-cpp-python>=0.2.0]
+platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags:
-    - llama.cpp
-    - GGUF
-    - Quantization
-    - Hugging Face Hub
-    - CPU Inference
-    - Apple Silicon
-    - Edge Deployment
-    - AMD GPUs
-    - Intel GPUs
-    - NVIDIA
-    - URL-first
-  tags:
-  - MLOps
-  - llama.cpp
-  - GGUF
-  - Quantization
-  - Hugging Face Hub
-  - CPU Inference
-  - Apple Silicon
-  - Edge Deployment
-  - AMD GPUs
-  - Intel GPUs
-  - NVIDIA
-  - URL-first
+    tags: [llama.cpp, GGUF, Quantization, Hugging Face Hub, CPU Inference, Apple Silicon, Edge Deployment, AMD GPUs, Intel GPUs, NVIDIA, URL-first]
+  tags: [MLOps, llama.cpp, GGUF, Quantization, Hugging Face Hub, CPU Inference, Apple Silicon, Edge Deployment, AMD GPUs, Intel GPUs, NVIDIA, URL-first]
 ---
 # llama.cpp + GGUF
 

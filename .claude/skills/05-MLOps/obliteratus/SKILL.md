@@ -1,46 +1,16 @@
 ---
 name: obliteratus
-description: 'OBLITERATUS: abliterate LLM refusals (diff-in-means).'
+description: "OBLITERATUS: abliterate LLM refusals (diff-in-means)."
 version: 2.0.0
 author: Hermes Agent
 license: MIT
-dependencies:
-- obliteratus
-- torch
-- transformers
-- bitsandbytes
-- accelerate
-- safetensors
-platforms:
-- linux
-- macos
+dependencies: [obliteratus, torch, transformers, bitsandbytes, accelerate, safetensors]
+platforms: [linux, macos]
 metadata:
   hermes:
-    tags:
-    - Abliteration
-    - Uncensoring
-    - Refusal-Removal
-    - LLM
-    - Weight-Projection
-    - SVD
-    - Mechanistic-Interpretability
-    - HuggingFace
-    - Model-Surgery
-    related_skills:
-    - vllm
-    - gguf
-    - huggingface-tokenizers
-  tags:
-  - MLOps
-  - Abliteration
-  - Uncensoring
-  - Refusal-Removal
-  - LLM
-  - Weight-Projection
-  - SVD
-  - Mechanistic-Interpretability
-  - HuggingFace
-  - Model-Surgery
+    tags: [Abliteration, Uncensoring, Refusal-Removal, LLM, Weight-Projection, SVD, Mechanistic-Interpretability, HuggingFace, Model-Surgery]
+    related_skills: [vllm, gguf, huggingface-tokenizers]
+  tags: [MLOps, Abliteration, Uncensoring, Refusal-Removal, LLM, Weight-Projection, SVD, Mechanistic-Interpretability, HuggingFace, Model-Surgery]
 ---
 # OBLITERATUS Skill
 

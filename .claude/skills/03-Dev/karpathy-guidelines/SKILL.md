@@ -1,12 +1,15 @@
 ---
 name: karpathy-guidelines
-description: Behavioral guidelines to reduce common LLM coding mistakes. Use when
-  writing, reviewing, or refactoring code to avoid overcomplication, make surgical
-  changes, surface assumptions, and define verifiable success criteria.
+description: Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.
+version: 1.0.0
+author: Hermes Agent
 license: MIT
+platforms: [linux, macos, windows]
 metadata:
-  tags:
-  - Dev
+  hermes:
+    tags: [Dev, Guidelines, Code-Quality]
+    related_skills: []
+  tags: [Dev]
 ---
 # Karpathy Guidelines
 

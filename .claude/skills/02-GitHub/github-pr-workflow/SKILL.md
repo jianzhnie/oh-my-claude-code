@@ -1,32 +1,15 @@
 ---
 name: github-pr-workflow
-description: 'GitHub PR lifecycle: branch, commit, open, CI, merge.'
+description: "GitHub PR lifecycle: branch, commit, open, CI, merge."
 version: 1.1.0
 author: Hermes Agent
 license: MIT
-platforms:
-- linux
-- macos
-- windows
+platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags:
-    - GitHub
-    - Pull-Requests
-    - CI/CD
-    - Git
-    - Automation
-    - Merge
-    related_skills:
-    - github-auth
-    - github-code-review
-  tags:
-  - GitHub
-  - Pull-Requests
-  - CI/CD
-  - Git
-  - Automation
-  - Merge
+    tags: [GitHub, Pull-Requests, CI/CD, Git, Automation, Merge]
+    related_skills: [github-auth, github-code-review]
+  tags: [GitHub, Pull-Requests, CI/CD, Git, Automation, Merge]
 ---
 # GitHub Pull Request Workflow
 

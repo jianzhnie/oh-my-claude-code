@@ -1,13 +1,15 @@
 ---
 name: obsidian
 description: Read, search, create, and edit notes in the Obsidian vault.
-platforms:
-- linux
-- macos
-- windows
+version: 1.0.0
+author: Hermes Agent
+license: MIT
+platforms: [linux, macos, windows]
 metadata:
-  tags:
-  - Research
+  hermes:
+    tags: [Obsidian, Knowledge-Base, Notes, Markdown]
+    related_skills: []
+  tags: [Research]
 ---
 # Obsidian Vault
 
