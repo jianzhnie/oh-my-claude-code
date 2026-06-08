@@ -1,6 +1,13 @@
 ---
 name: tech-doc-translator
 description: Use when translating English technical documentation (AI/ML, developer tools, API docs) into Chinese Markdown. Triggers on requests to translate docs, localize content, or convert English technical writing to Chinese.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Skill, Translation, Chinese, Documentation]
+  related_skills: []
 ---
 
 # AI 技术文档翻译助手

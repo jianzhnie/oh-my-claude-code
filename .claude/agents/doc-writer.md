@@ -1,6 +1,13 @@
 ---
 name: doc-writer
 description: Writes and updates documentation, docstrings, and inline comments. Use when adding missing docs, improving unclear explanations, or documenting new features. Adapts to the project's existing documentation style.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Agent, Documentation, Writing]
+  related_skills: []
 tools: Read, Write, Edit, Grep, Glob
 model: sonnet
 permissionMode: acceptEdits

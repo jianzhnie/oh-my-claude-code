@@ -1,6 +1,13 @@
 ---
 name: library-integration
 description: Specializes in integrating third-party libraries, SDKs, and APIs into a project. Use when adding a new dependency, upgrading a library with breaking changes, wrapping an external API, or adapting code to work with a new framework version.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Agent, Integration, Dependencies, API]
+  related_skills: []
 tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch
 model: sonnet
 permissionMode: acceptEdits

@@ -1,6 +1,13 @@
 ---
 name: architect
 description: System architect for high-level design decisions. Use proactively when planning new features, evaluating architectural tradeoffs, designing APIs, or making decisions that affect multiple modules. Uses deeper reasoning for complex design questions.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Agent, Architecture, Design, System]
+  related_skills: []
 tools: Read, Grep, Glob, Bash
 model: opus
 color: cyan

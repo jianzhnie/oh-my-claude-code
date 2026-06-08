@@ -1,5 +1,13 @@
 ---
+name: status
 description: Show current project status at a glance
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Command, Git, Status]
+  related_skills: []
 argument-hint: none
 ---
 

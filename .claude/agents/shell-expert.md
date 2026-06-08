@@ -1,6 +1,13 @@
 ---
 name: shell-expert
 description: Shell script specialist. Use for writing .sh files, bash scripting, fixing shellcheck warnings, or reviewing shell code. Follows POSIX-compatible best practices by default.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Agent, Shell, Bash, Scripting]
+  related_skills: []
 tools: Read, Write, Edit, Bash, Grep, Glob
 model: sonnet
 permissionMode: acceptEdits

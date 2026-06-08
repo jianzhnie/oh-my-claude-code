@@ -1,6 +1,13 @@
 ---
 name: test-writer
 description: Writes unit and integration tests. Use proactively after implementing new code, fixing bugs (add regression test), or when test coverage is missing. Adapts to whatever test framework and conventions the project uses.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Agent, Testing, QA]
+  related_skills: []
 tools: Read, Write, Edit, Bash, Grep, Glob
 model: sonnet
 permissionMode: acceptEdits

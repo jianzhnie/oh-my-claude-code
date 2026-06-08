@@ -1,6 +1,13 @@
 ---
 name: debugger
 description: Debugging specialist for errors, test failures, crashes, and unexpected behavior. Use proactively when encountering any issues — traces the root cause systematically and proposes fixes.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Agent, Debugging, Troubleshooting]
+  related_skills: []
 tools: Read, Edit, Bash, Grep, Glob
 model: sonnet
 permissionMode: acceptEdits

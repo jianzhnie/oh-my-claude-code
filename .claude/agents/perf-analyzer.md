@@ -1,6 +1,13 @@
 ---
 name: perf-analyzer
 description: Performance analysis specialist. Use proactively when investigating throughput issues, memory bottlenecks, latency regressions, or slow operations. Identifies the hot path and recommends concrete optimizations.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Agent, Performance, Optimization]
+  related_skills: []
 tools: Read, Bash, Grep, Glob
 model: sonnet
 color: pink

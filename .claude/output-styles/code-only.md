@@ -1,6 +1,13 @@
 ---
 name: Code-Only
 description: 只输出代码和必要的 shell 命令，不解释不总结。适合明确知道要什么的快速实现场景。
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Output-Style, Code-Only, Minimal]
+  related_skills: []
 keep-coding-instructions: true
 ---
 

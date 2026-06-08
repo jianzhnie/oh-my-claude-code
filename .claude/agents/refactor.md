@@ -1,6 +1,13 @@
 ---
 name: refactor
 description: Safe code refactoring specialist. Improves structure without changing behavior. Use for renaming, extracting functions, simplifying logic, or reducing duplication. Checks impact before every edit.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Agent, Refactoring, Code-Quality]
+  related_skills: []
 tools: Read, Write, Edit, Bash, Grep, Glob
 model: sonnet
 permissionMode: acceptEdits

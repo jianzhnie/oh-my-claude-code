@@ -1,3 +1,15 @@
+---
+name: git-conventions
+description: Git commit conventions for the project, including Conventional Commits format and commit rules.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Rule, Git, Conventions, Commit]
+  related_skills: []
+---
+
 # Git Conventions
 
 ## Commit messages

@@ -1,4 +1,13 @@
 ---
+name: python-style
+description: Python coding style guide based on Google Python Style Guide, adapted for modern Python 3.10+.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Rule, Python, Style, Formatting]
+  related_skills: [check]
 paths:
   - "**/*.py"
   - "**/*.pyi"

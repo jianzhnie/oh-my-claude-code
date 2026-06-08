@@ -1,6 +1,13 @@
 ---
 name: Diagrams-First
 description: 解释架构、数据流或代码结构时，先用 Mermaid 图展示，再文字说明。
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Output-Style, Diagrams, Mermaid, Visualization]
+  related_skills: []
 keep-coding-instructions: true
 ---
 

@@ -1,5 +1,13 @@
 ---
+name: precheck
 description: Run all pre-commit checks before committing
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Command, Pre-commit, Lint]
+  related_skills: [check]
 argument-hint: none
 ---
 

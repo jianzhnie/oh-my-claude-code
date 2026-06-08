@@ -1,6 +1,13 @@
 ---
 name: code-reviewer
 description: Expert code review specialist. Proactively reviews code for correctness, security, performance, and maintainability. Use immediately after writing or modifying code, before merging PRs, or when asked to review changes.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Agent, Code-Review, Quality, Security]
+  related_skills: []
 tools: Read, Grep, Glob, Bash, WebFetch
 model: sonnet
 color: blue

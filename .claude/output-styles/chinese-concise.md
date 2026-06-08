@@ -1,6 +1,13 @@
 ---
 name: Chinese-Concise
 description: 中文回复，简洁直接，不啰嗦不总结。适合日常开发交互。
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Output-Style, Chinese, Concise]
+  related_skills: []
 keep-coding-instructions: true
 ---
 

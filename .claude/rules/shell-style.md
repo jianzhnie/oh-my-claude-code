@@ -1,4 +1,13 @@
 ---
+name: shell-style
+description: Shell script coding style guide based on Google Shell Style Guide, adapted for bash 4.2+ compatibility.
+version: 1.0.0
+author: Robin
+license: Apache-2.0
+platforms: [linux, macos, windows]
+metadata:
+  tags: [Rule, Shell, Bash, Style, Formatting]
+  related_skills: [shell-check, check]
 paths:
   - "**/*.sh"
   - "**/*.bash"
