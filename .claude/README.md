@@ -58,9 +58,7 @@ Skills are organized by functional category. Each skill's `metadata.tags` begins
 
 | Name | Path | Version | Author | License | Type | External Info |
 |------|------|---------|--------|---------|------|---------------|
-| hermes-agent-skill-authoring | [skills/03-Dev/hermes-agent-skill-authoring/SKILL.md](skills/03-Dev/hermes-agent-skill-authoring/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
 | karpathy-guidelines | [skills/03-Dev/karpathy-guidelines/SKILL.md](skills/03-Dev/karpathy-guidelines/SKILL.md) | — | — | MIT | External | Derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) |
-| node-inspect-debugger | [skills/03-Dev/node-inspect-debugger/SKILL.md](skills/03-Dev/node-inspect-debugger/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
 | plan | [skills/03-Dev/plan/SKILL.md](skills/03-Dev/plan/SKILL.md) | 2.0.0 | Hermes Agent (writing-craft adapted from obra/superpowers) | MIT | External | Hermes Agent `skills/` |
 | python-debugpy | [skills/03-Dev/python-debugpy/SKILL.md](skills/03-Dev/python-debugpy/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
 | simplify-code | [skills/03-Dev/simplify-code/SKILL.md](skills/03-Dev/simplify-code/SKILL.md) | 1.0.0 | Hermes Agent (inspired by Claude Code /simplify) | MIT | External | Hermes Agent `skills/` |
@@ -75,7 +73,6 @@ Skills are organized by functional category. Each skill's `metadata.tags` begins
 | arxiv | [skills/04-Research/arxiv/SKILL.md](skills/04-Research/arxiv/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
 | blogwatcher | [skills/04-Research/blogwatcher/SKILL.md](skills/04-Research/blogwatcher/SKILL.md) | 2.0.0 | JulienTant (fork of Hyaxia/blogwatcher) | MIT | External | [github.com/JulienTant/blogwatcher-cli](https://github.com/JulienTant/blogwatcher-cli) |
 | llm-wiki | [skills/04-Research/llm-wiki/SKILL.md](skills/04-Research/llm-wiki/SKILL.md) | 2.1.0 | Hermes Agent | MIT | External | Based on [Andrej Karpathy's LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) |
-| obsidian | [skills/04-Research/obsidian/SKILL.md](skills/04-Research/obsidian/SKILL.md) | — | — | — | External | Hermes Agent `skills/note-taking/` |
 | tech-doc-translator | [skills/04-Research/tech-doc-translator/SKILL.md](skills/04-Research/tech-doc-translator/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — |
 
 ### MLOps
