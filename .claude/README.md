@@ -35,58 +35,57 @@ This directory contains all Claude Code configurations for the oh-my-claude-code
 
 Skills are organized by functional category. Each skill's `metadata.tags` begins with its category label.
 
-### Check
+### Pre-commit
 
 | Name | Path | Version | Author | License | Type | External Info |
 |------|------|---------|--------|---------|------|---------------|
-| check | [skills/01-Check/check/SKILL.md](skills/01-Check/check/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — |
-| shell-check | [skills/01-Check/shell-check/SKILL.md](skills/01-Check/shell-check/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — |
+| check | [skills/pre-commit/check/SKILL.md](skills/pre-commit/check/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — |
+| shell-check | [skills/pre-commit/shell-check/SKILL.md](skills/pre-commit/shell-check/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — |
 
 ### GitHub
 
 | Name | Path | Version | Author | License | Type | External Info |
 |------|------|---------|--------|---------|------|---------------|
-| codebase-inspection | [skills/02-GitHub/codebase-inspection/SKILL.md](skills/02-GitHub/codebase-inspection/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
-| github-auth | [skills/02-GitHub/github-auth/SKILL.md](skills/02-GitHub/github-auth/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
-| github-code-review | [skills/02-GitHub/github-code-review/SKILL.md](skills/02-GitHub/github-code-review/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
-| github-issues | [skills/02-GitHub/github-issues/SKILL.md](skills/02-GitHub/github-issues/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
-| github-pr-workflow | [skills/02-GitHub/github-pr-workflow/SKILL.md](skills/02-GitHub/github-pr-workflow/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
-| github-repo-management | [skills/02-GitHub/github-repo-management/SKILL.md](skills/02-GitHub/github-repo-management/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
-| requesting-code-review | [skills/02-GitHub/requesting-code-review/SKILL.md](skills/02-GitHub/requesting-code-review/SKILL.md) | 2.0.0 | Hermes Agent (adapted from obra/superpowers + MorAlekss) | MIT | External | Hermes Agent `skills/` |
+| codebase-inspection | [skills/github/codebase-inspection/SKILL.md](skills/github/codebase-inspection/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
+| github-auth | [skills/github/github-auth/SKILL.md](skills/github/github-auth/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
+| github-code-review | [skills/github/github-code-review/SKILL.md](skills/github/github-code-review/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
+| github-issues | [skills/github/github-issues/SKILL.md](skills/github/github-issues/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
+| github-pr-workflow | [skills/github/github-pr-workflow/SKILL.md](skills/github/github-pr-workflow/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
+| github-repo-management | [skills/github/github-repo-management/SKILL.md](skills/github/github-repo-management/SKILL.md) | 1.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
+| requesting-code-review | [skills/github/requesting-code-review/SKILL.md](skills/github/requesting-code-review/SKILL.md) | 2.0.0 | Hermes Agent (adapted from obra/superpowers + MorAlekss) | MIT | External | Hermes Agent `skills/` |
 
-### Dev
+### Software Development
 
 | Name | Path | Version | Author | License | Type | External Info |
 |------|------|---------|--------|---------|------|---------------|
-| karpathy-guidelines | [skills/03-Dev/karpathy-guidelines/SKILL.md](skills/03-Dev/karpathy-guidelines/SKILL.md) | — | — | MIT | External | Derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) |
-| plan | [skills/03-Dev/plan/SKILL.md](skills/03-Dev/plan/SKILL.md) | 2.0.0 | Hermes Agent (writing-craft adapted from obra/superpowers) | MIT | External | Hermes Agent `skills/` |
-| python-debugpy | [skills/03-Dev/python-debugpy/SKILL.md](skills/03-Dev/python-debugpy/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
-| simplify-code | [skills/03-Dev/simplify-code/SKILL.md](skills/03-Dev/simplify-code/SKILL.md) | 1.0.0 | Hermes Agent (inspired by Claude Code /simplify) | MIT | External | Hermes Agent `skills/` |
-| spike | [skills/03-Dev/spike/SKILL.md](skills/03-Dev/spike/SKILL.md) | 1.0.0 | Hermes Agent (adapted from gsd-build/get-shit-done) | MIT | External | Hermes Agent `skills/` |
-| systematic-debugging | [skills/03-Dev/systematic-debugging/SKILL.md](skills/03-Dev/systematic-debugging/SKILL.md) | 1.1.0 | Hermes Agent (adapted from obra/superpowers) | MIT | External | Hermes Agent `skills/` |
-| test-driven-development | [skills/03-Dev/test-driven-development/SKILL.md](skills/03-Dev/test-driven-development/SKILL.md) | 1.1.0 | Hermes Agent (adapted from obra/superpowers) | MIT | External | Hermes Agent `skills/` |
+| karpathy-guidelines | [skills/software-development/karpathy-guidelines/SKILL.md](skills/software-development/karpathy-guidelines/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
+| plan | [skills/software-development/plan/SKILL.md](skills/software-development/plan/SKILL.md) | 2.0.0 | Hermes Agent (writing-craft adapted from obra/superpowers) | MIT | External | Hermes Agent `skills/` |
+| python-debugpy | [skills/software-development/python-debugpy/SKILL.md](skills/software-development/python-debugpy/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
+| simplify-code | [skills/software-development/simplify-code/SKILL.md](skills/software-development/simplify-code/SKILL.md) | 1.0.0 | Hermes Agent (inspired by Claude Code /simplify) | MIT | External | Hermes Agent `skills/` |
+| systematic-debugging | [skills/software-development/systematic-debugging/SKILL.md](skills/software-development/systematic-debugging/SKILL.md) | 1.1.0 | Hermes Agent (adapted from obra/superpowers) | MIT | External | Hermes Agent `skills/` |
+| test-driven-development | [skills/software-development/test-driven-development/SKILL.md](skills/software-development/test-driven-development/SKILL.md) | 1.1.0 | Hermes Agent (adapted from obra/superpowers) | MIT | External | Hermes Agent `skills/` |
 
 ### Research
 
 | Name | Path | Version | Author | License | Type | External Info |
 |------|------|---------|--------|---------|------|---------------|
-| arxiv | [skills/04-Research/arxiv/SKILL.md](skills/04-Research/arxiv/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
-| blogwatcher | [skills/04-Research/blogwatcher/SKILL.md](skills/04-Research/blogwatcher/SKILL.md) | 2.0.0 | JulienTant (fork of Hyaxia/blogwatcher) | MIT | External | [github.com/JulienTant/blogwatcher-cli](https://github.com/JulienTant/blogwatcher-cli) |
-| llm-wiki | [skills/04-Research/llm-wiki/SKILL.md](skills/04-Research/llm-wiki/SKILL.md) | 2.1.0 | Hermes Agent | MIT | External | Based on [Andrej Karpathy's LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) |
-| tech-doc-translator | [skills/04-Research/tech-doc-translator/SKILL.md](skills/04-Research/tech-doc-translator/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — |
+| arxiv | [skills/research/arxiv/SKILL.md](skills/research/arxiv/SKILL.md) | 1.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
+| blogwatcher | [skills/research/blogwatcher/SKILL.md](skills/research/blogwatcher/SKILL.md) | 2.0.0 | JulienTant (fork of Hyaxia/blogwatcher) | MIT | External | [github.com/JulienTant/blogwatcher-cli](https://github.com/JulienTant/blogwatcher-cli) |
+| llm-wiki | [skills/research/llm-wiki/SKILL.md](skills/research/llm-wiki/SKILL.md) | 2.1.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
+| tech-doc-translator | [skills/research/tech-doc-translator/SKILL.md](skills/research/tech-doc-translator/SKILL.md) | 1.0.0 | Robin | Apache-2.0 | Local | — |
 
 ### MLOps
 
 | Name | Path | Version | Author | License | Type | External Info |
 |------|------|---------|--------|---------|------|---------------|
-| audiocraft-audio-generation | [skills/05-MLOps/audiocraft-audio-generation/SKILL.md](skills/05-MLOps/audiocraft-audio-generation/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
-| evaluating-llms-harness | [skills/05-MLOps/evaluating-llms-harness/SKILL.md](skills/05-MLOps/evaluating-llms-harness/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
-| huggingface-hub | [skills/05-MLOps/huggingface-hub/SKILL.md](skills/05-MLOps/huggingface-hub/SKILL.md) | 1.0.0 | Hugging Face | MIT | External | Hugging Face |
-| llama-cpp | [skills/05-MLOps/llama-cpp/SKILL.md](skills/05-MLOps/llama-cpp/SKILL.md) | 2.1.2 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
-| obliteratus | [skills/05-MLOps/obliteratus/SKILL.md](skills/05-MLOps/obliteratus/SKILL.md) | 2.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
-| segment-anything-model | [skills/05-MLOps/segment-anything-model/SKILL.md](skills/05-MLOps/segment-anything-model/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
-| serving-llms-vllm | [skills/05-MLOps/vllm/SKILL.md](skills/05-MLOps/vllm/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
-| weights-and-biases | [skills/05-MLOps/weights-and-biases/SKILL.md](skills/05-MLOps/weights-and-biases/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
+| audiocraft-audio-generation | [skills/mlops/audiocraft-audio-generation/SKILL.md](skills/mlops/audiocraft-audio-generation/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
+| evaluating-llms-harness | [skills/mlops/evaluating-llms-harness/SKILL.md](skills/mlops/evaluating-llms-harness/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
+| huggingface-hub | [skills/mlops/huggingface-hub/SKILL.md](skills/mlops/huggingface-hub/SKILL.md) | 1.0.0 | Hugging Face | MIT | External | Hugging Face |
+| llama-cpp | [skills/mlops/llama-cpp/SKILL.md](skills/mlops/llama-cpp/SKILL.md) | 2.1.2 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
+| obliteratus | [skills/mlops/obliteratus/SKILL.md](skills/mlops/obliteratus/SKILL.md) | 2.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
+| segment-anything-model | [skills/mlops/segment-anything-model/SKILL.md](skills/mlops/segment-anything-model/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
+| vllm | [skills/mlops/vllm/SKILL.md](skills/mlops/vllm/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
+| weights-and-biases | [skills/mlops/weights-and-biases/SKILL.md](skills/mlops/weights-and-biases/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
 
 ## Rules
 
