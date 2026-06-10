@@ -87,6 +87,17 @@ Skills are organized by functional category. Each skill's `metadata.tags` begins
 | vllm | [skills/mlops/vllm/SKILL.md](skills/mlops/vllm/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
 | weights-and-biases | [skills/mlops/weights-and-biases/SKILL.md](skills/mlops/weights-and-biases/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
 
+### vLLM Skills
+
+| Name | Path | Version | Author | License | Type | External Info |
+|------|------|---------|--------|---------|------|---------------|
+| vllm-bench-random-synthetic | [skills/vllm-skills/vllm-bench-random-synthetic/SKILL.md](skills/vllm-skills/vllm-bench-random-synthetic/SKILL.md) | — | — | — | External | — |
+| vllm-bench-serve | [skills/vllm-skills/vllm-bench-serve/SKILL.md](skills/vllm-skills/vllm-bench-serve/SKILL.md) | — | — | — | External | — |
+| vllm-deploy-docker | [skills/vllm-skills/vllm-deploy-docker/SKILL.md](skills/vllm-skills/vllm-deploy-docker/SKILL.md) | — | — | — | External | — |
+| vllm-deploy-k8s | [skills/vllm-skills/vllm-deploy-k8s/SKILL.md](skills/vllm-skills/vllm-deploy-k8s/SKILL.md) | — | — | — | External | — |
+| vllm-deploy-simple | [skills/vllm-skills/vllm-deploy-simple/SKILL.md](skills/vllm-skills/vllm-deploy-simple/SKILL.md) | — | — | — | External | — |
+| vllm-prefix-cache-bench | [skills/vllm-skills/vllm-prefix-cache-bench/SKILL.md](skills/vllm-skills/vllm-prefix-cache-bench/SKILL.md) | — | — | — | External | — |
+
 ## Rules
 
 | Name | Path | Version | Author | License | Type |
