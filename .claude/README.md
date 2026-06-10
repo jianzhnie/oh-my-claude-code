@@ -97,6 +97,7 @@ Skills are organized by functional category. Each skill's `metadata.tags` begins
 | vllm-deploy-k8s | [skills/vllm-skills/vllm-deploy-k8s/SKILL.md](skills/vllm-skills/vllm-deploy-k8s/SKILL.md) | 1.0.0 | vLLM Team | MIT | External | — |
 | vllm-deploy-simple | [skills/vllm-skills/vllm-deploy-simple/SKILL.md](skills/vllm-skills/vllm-deploy-simple/SKILL.md) | 1.0.0 | vLLM Team | MIT | External | — |
 | vllm-prefix-cache-bench | [skills/vllm-skills/vllm-prefix-cache-bench/SKILL.md](skills/vllm-skills/vllm-prefix-cache-bench/SKILL.md) | 1.0.0 | vLLM Team | MIT | External | — |
+| vllm-ascend | [skills/vllm-skills/vllm-ascend/SKILL.md](skills/vllm-skills/vllm-ascend/SKILL.md) | 1.0.0 | vLLM Team | MIT | External | — |
 
 ## Rules
 
