@@ -91,12 +91,12 @@ Skills are organized by functional category. Each skill's `metadata.tags` begins
 
 | Name | Path | Version | Author | License | Type | External Info |
 |------|------|---------|--------|---------|------|---------------|
-| vllm-bench-random-synthetic | [skills/vllm-skills/vllm-bench-random-synthetic/SKILL.md](skills/vllm-skills/vllm-bench-random-synthetic/SKILL.md) | — | — | — | External | — |
-| vllm-bench-serve | [skills/vllm-skills/vllm-bench-serve/SKILL.md](skills/vllm-skills/vllm-bench-serve/SKILL.md) | — | — | — | External | — |
-| vllm-deploy-docker | [skills/vllm-skills/vllm-deploy-docker/SKILL.md](skills/vllm-skills/vllm-deploy-docker/SKILL.md) | — | — | — | External | — |
-| vllm-deploy-k8s | [skills/vllm-skills/vllm-deploy-k8s/SKILL.md](skills/vllm-skills/vllm-deploy-k8s/SKILL.md) | — | — | — | External | — |
-| vllm-deploy-simple | [skills/vllm-skills/vllm-deploy-simple/SKILL.md](skills/vllm-skills/vllm-deploy-simple/SKILL.md) | — | — | — | External | — |
-| vllm-prefix-cache-bench | [skills/vllm-skills/vllm-prefix-cache-bench/SKILL.md](skills/vllm-skills/vllm-prefix-cache-bench/SKILL.md) | — | — | — | External | — |
+| vllm-bench-random-synthetic | [skills/vllm-skills/vllm-bench-random-synthetic/SKILL.md](skills/vllm-skills/vllm-bench-random-synthetic/SKILL.md) | 1.0.0 | vLLM Team | MIT | External | — |
+| vllm-bench-serve | [skills/vllm-skills/vllm-bench-serve/SKILL.md](skills/vllm-skills/vllm-bench-serve/SKILL.md) | 1.0.0 | vLLM Team | MIT | External | — |
+| vllm-deploy-docker | [skills/vllm-skills/vllm-deploy-docker/SKILL.md](skills/vllm-skills/vllm-deploy-docker/SKILL.md) | 1.0.0 | vLLM Team | MIT | External | — |
+| vllm-deploy-k8s | [skills/vllm-skills/vllm-deploy-k8s/SKILL.md](skills/vllm-skills/vllm-deploy-k8s/SKILL.md) | 1.0.0 | vLLM Team | MIT | External | — |
+| vllm-deploy-simple | [skills/vllm-skills/vllm-deploy-simple/SKILL.md](skills/vllm-skills/vllm-deploy-simple/SKILL.md) | 1.0.0 | vLLM Team | MIT | External | — |
+| vllm-prefix-cache-bench | [skills/vllm-skills/vllm-prefix-cache-bench/SKILL.md](skills/vllm-skills/vllm-prefix-cache-bench/SKILL.md) | 1.0.0 | vLLM Team | MIT | External | — |
 
 ## Rules
 
