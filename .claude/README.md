@@ -84,7 +84,7 @@ Skills are organized by functional category. Each skill's `metadata.tags` begins
 | llama-cpp | [skills/mlops/llama-cpp/SKILL.md](skills/mlops/llama-cpp/SKILL.md) | 2.1.2 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
 | obliteratus | [skills/mlops/obliteratus/SKILL.md](skills/mlops/obliteratus/SKILL.md) | 2.0.0 | Hermes Agent | MIT | External | Hermes Agent `skills/` |
 | segment-anything-model | [skills/mlops/segment-anything-model/SKILL.md](skills/mlops/segment-anything-model/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
-| vllm | [skills/mlops/vllm/SKILL.md](skills/mlops/vllm/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
+| serving-llms-vllm | [skills/mlops/vllm/SKILL.md](skills/mlops/vllm/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
 | weights-and-biases | [skills/mlops/weights-and-biases/SKILL.md](skills/mlops/weights-and-biases/SKILL.md) | 1.0.0 | Orchestra Research | MIT | External | Hermes Agent `skills/` |
 
 ### vLLM Skills
@@ -136,5 +136,5 @@ metadata:
 
 - **Local** configs: Author is `Robin`, Version is `1.0.0`, License is `Apache-2.0`.
 - **External** configs: Original metadata (Author, Version, License) is preserved. Category tag is added to `metadata.tags` for organization.
-- Skills are categorized into: `Check`, `GitHub`, `Dev`, `Research`, `MLOps`.
+- Skills are categorized into: `Pre-commit`, `GitHub`, `Software Development`, `Research`, `MLOps`, `vLLM Skills`.
 - Skills are stored under `skills/<category-folder>/<skill-name>/`.
