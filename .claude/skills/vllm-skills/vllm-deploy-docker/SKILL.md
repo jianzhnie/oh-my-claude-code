@@ -52,7 +52,7 @@ docker run --rm --gpus all \
 
 ## Build Docker image from source
 
-You can build and run vLLM from source by using the provided [docker/Dockerfile](https://github.com/vllm-project/vllm/blob/main/docker/Dockerfile). 
+You can build and run vLLM from source by using the provided [docker/Dockerfile](https://github.com/vllm-project/vllm/blob/main/docker/Dockerfile).
 First, check the hardware of the host machine and ensure you have the necessary dependencies installed (e.g., NVIDIA drivers, CUDA toolkit, Docker with BuildKit support). For ARM64/aarch64 builds, refer to the "Building for ARM64/aarch64" section.
 
 ### Basic build command

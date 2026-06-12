@@ -13,7 +13,7 @@
 - **Version**: 统一设置为 `"1.0.0"`。
 - **License**: 保持本仓库的 License (`Apache-2.0`)。
 - **Platforms**: 保持本仓库的 Platforms 配置 `[linux, macos, windows]`。
-- **Metadata**: 
+- **Metadata**:
   - 包含 `tags`, `related_skills` 等元数据。
 - **外部引入配置**: 保持其原始配置，严禁修改其原始 Author, Version 和 License。
 

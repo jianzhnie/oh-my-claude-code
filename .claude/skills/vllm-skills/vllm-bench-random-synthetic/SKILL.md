@@ -46,7 +46,7 @@ vllm bench serve \
   --num-prompts 10
 ```
 
-**Note**: 
+**Note**:
 - Use `--backend openai-chat` with endpoint `/v1/chat/completions` for online benchmarks.
 
 ## Parameters

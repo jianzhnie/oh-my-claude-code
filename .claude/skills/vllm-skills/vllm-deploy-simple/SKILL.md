@@ -169,7 +169,7 @@ curl http://localhost:8000/v1/chat/completions \
 **Virtual environment not found:**
 - Ensure the path provided with `--venv` exists and is a valid virtual environment
 - Check that the activation script exists (`bin/activate` on Linux/macOS or `Scripts/activate` on Windows)
-- Check and install uv, and create a new virtual environment with uv: `uv venv /path/to/venv` (suggested); or with pip: `python3 -m venv /path/to/venv` 
+- Check and install uv, and create a new virtual environment with uv: `uv venv /path/to/venv` (suggested); or with pip: `python3 -m venv /path/to/venv`
 
 **Server won't start:**
 - Check if the port is already in use: `lsof -i :8000`
